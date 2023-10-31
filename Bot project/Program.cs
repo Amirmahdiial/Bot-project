@@ -5,7 +5,7 @@ using Telegram.Bot.Types;
 using Microsoft.Extensions.Configuration;
 using Bot_project;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-
+//امیرمهدی علی پورتاجانی
 TelegramBotClient myBot;
 int updatesOffset = 0;
 string filePath = Path.Combine("Token.txt");
@@ -65,6 +65,15 @@ while (true)
             {
                 await myBot.SendTextMessageAsync(chatId, await Movie.PupMovie(int.Parse(text)), replyToMessageId: messageId);
             }
+            else if (text == "/joke" && isactive)
+            {
+                var joke = await Jokes.RandomJokes();
+                string? chert = "";
+               
+                    chert += $"joke:{joke.value}\n{joke.icon_url}";
+               
+                await myBot.SendTextMessageAsync(chatId, chert , replyToMessageId: messageId);
+            }
             else if (text == "/now" && isactive)   
             {
                 await myBot.SendTextMessageAsync(chatId, DateTime.Now.ToString(), replyToMessageId: messageId);
@@ -72,7 +81,8 @@ while (true)
             else if (text == "/exit" && isactive)
             {
                 isactive = false;
-                
+                await myBot.SendTextMessageAsync(chatId, "bot stoped!", replyToMessageId: messageId);
+
             }
             else if (isactive)
             {

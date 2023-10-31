@@ -17,8 +17,6 @@ namespace Bot_project
             {
                 string? stringMvi = "https://moviesapi.ir/api/v1/movies?page={page}";
 
-
-
                 HttpResponseMessage response = await httpClient.GetAsync(stringMvi);
                 if (response.IsSuccessStatusCode)
                 {
@@ -48,7 +46,7 @@ namespace Bot_project
             string str5 = "";
             using (HttpClient httpClient = new HttpClient())
             {
-                string? stringMvi = "https://api.wallex.ir/v1/currencies/stats";
+                string? stringMvi = "https://moviesapi.ir/api/v1/movies?page={page}";
 
 
 
